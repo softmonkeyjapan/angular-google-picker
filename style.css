@@ -84,7 +84,7 @@ a:hover {
 
 .btn-blue {
   background: #4386fc;
-  box-shadow: 0 6px #3168CA;
+  box-shadow: 0 4px #3168CA;
 }
 
 .btn i {
@@ -144,3 +144,8 @@ a:hover {
         display: block;
         padding-top: 5px;
       }
+
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .3;
+}
