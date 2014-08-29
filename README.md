@@ -18,35 +18,35 @@ Angular directive that interact with the Google API Picker :
   <script src="http://apis.google.com/js/client.js"></script>
   <script src="http://apis.google.com/js/api.js"></script>
   ```
-  
+
 2. Include the Google Picker as a dependency for your app
 
   ```js
   angular.module('myApp', ['lk-google-picker'])
   ```
-  
+
 3. Configure the plugin (see below **configuration** section)  
 
 4. Create a scope to handle files that will be selected
 
   ```js
   angular.module('myApp', ['lk-google-picker'])
-  
+
   .controller('ExamplaCtrl', ['$scope', function($scope) {
      $scope.files = [];
   }]);
   ```
-  
+
 5. Add the directive to your HTML element
 
   ```html
   <a href="javascript:;" lk-google-picker picker-files="files">Open my Google Drive</a>
   ```
-  
+
 6. That's it, you're done!
 
-  
-You'll notice here the usage of `picker-files`. You need to pass here a scope that gonna receive the selected files. Once selected, the plugin gonna push files into it. A file is a json object that looks like : 
+
+You'll notice here the usage of `picker-files`. You need to pass here a scope that gonna receive the selected files. Once selected, the plugin gonna push files into it. A file is a json object that looks like :
 
   ```json
   [
@@ -108,7 +108,7 @@ angular.module('myApp', ['lk-google-picker'])
 
 ### Features  
 
-The Picker use the concept of views and features that allow you to customize it. The service provider allow you to enable some features to the Picker the same way you define your API Key or client ID (using either configure or setters). 
+The Picker use the concept of views and features that allow you to customize it. The service provider allow you to enable some features to the Picker the same way you define your API Key or client ID (using either configure or setters).
 
 ```js
 angular.module('myApp', ['lk-google-picker'])
@@ -118,12 +118,12 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations. 
+Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 
 
-### Views 
+### Views
 
-Views are objects that needs to be instanciate using the namespace `google.picker.*`. That namespace is already defined in the core of the directive. In order to add views to your picker, all you need to do is to define the class that needs to be used : 
+Views are objects that needs to be instanciate using the namespace `google.picker.*`. That namespace is already defined in the core of the directive. In order to add views to your picker, all you need to do is to define the class that needs to be used :
 
 ```js
 angular.module('myApp', ['lk-google-picker'])
@@ -136,7 +136,7 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-**NOTE** : Views classes have some usefull methods such as `setIncludeFolders` or `setStarred` (or any other methods available). In order to use them, just chain them to the class : 
+**NOTE** : Views classes have some usefull methods such as `setIncludeFolders` or `setStarred` (or any other methods available). In order to use them, just chain them to the class :
 
 ```js
 angular.module('myApp', ['lk-google-picker'])
@@ -149,7 +149,28 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations. 
+Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
+
+
+# Example
+
+The demo version available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/) can be found in the `example` folder.
+You will need a server in order to try it on your local machine. Since the Google Picker demo application is setup to allow origin from localhost:8000, I encourage you to use the python `SimpleHTTPServer` :
+
+```shell
+$ cd path/to/the/example/directory
+$ python -m SimpleHTTPServer
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+You should now be able to browse to `localhost:8000` and see it in action from your localhost.
+
+
+# Demo
+
+A demo version is available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/).
+Note that clicking on `Pick files` button may fail the first time because your browser may block the popup. Allow it or click again to make it works.
+
 
 # License:
 Licensed under the MIT license

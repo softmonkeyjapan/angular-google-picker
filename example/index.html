@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Angular Google Picker</title>
+
+    <!-- Bootstrap / Fontawesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300&amp;subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic" rel="stylesheet">
+
+    <!-- Google API -->
+    <script src="//apis.google.com/js/client.js"></script>
+    <script src="//apis.google.com/js/api.js"></script>
+
+    <!-- Angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
+    <!-- Angular Google picker -->
+    <script src="google-picker.min.js"></script>
+
+    <!-- Example app -->
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="GooglePickerExample" ng-controller="ExampleCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="text-center">
+            <img src="images/logo-drive.png" class="logo" alt="Drive logo" />
+            <div class="heading-headline">
+              Angular Google Picker
+            </div>
+
+            <div>
+              <a href="javascript:;" lk-google-picker picker-files="files" class="btn btn-2 btn-2c btn-blue">
+                <i class="fa fa-inbox"></i>
+                <span>Pick files</span>
+              </a>
+
+              <a href="https://github.com/softmonkeyjapan/angular-google-picker" class="btn btn-2 btn-2c btn-blue">
+                <i class="fa fa-github"></i>
+                <span>Fork me</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="row dashed-border" ng-switch="files.length > 0">
+            <div class="text-center" ng-switch-when="false">
+              <div class="none">No files selected yet</div>
+            </div>
+
+            <div ng-switch-when="true">
+              <div class="col-sm-4 item item-test" ng-repeat="file in files">
+                <a href="{{ file.url }}" target="_blank">
+                  <div class="icon">
+                    <div class="document">
+                      <span class="ng-binding">
+                        {{ file.name | getExtension }}
+                      </span>
+                    </div>
+                  </div>
+                  <span>{{ file.name | limitTo:20 }}</span><span ng-if="file.name.length >=20">...</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
