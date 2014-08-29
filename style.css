@@ -1,0 +1,146 @@
+body {
+  font-family: "open sans", arial, sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  margin-top: 7%;
+  margin-bottom: 50px;
+}
+
+.logo {
+  height: 77px;
+}
+
+.heading-headline {
+  color: #404040;
+  font-size: 48px;
+  font-weight: 300;
+}
+
+/* General button style (reset) */
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 6px 60px;
+  display: inline-block;
+  margin: 15px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:hover, .btn:active {
+  color: #ffffff;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Button 2 */
+.btn-2 {
+  background: #cb4e4e;
+  color: #fff;
+  box-shadow: 0 6px #ab3c3c;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+/* Button 2c */
+.btn-2c {
+  border-radius: 5px;
+}
+
+.btn-2c .btn-blue:hover {
+  box-shadow: 0 4px #3168CA;
+  top: 2px;
+}
+
+.btn-2c .btn-blue:active {
+  box-shadow: 0 0 #3168CA;
+  top: 6px;
+}
+
+.btn-blue {
+  background: #4386fc;
+  box-shadow: 0 6px #3168CA;
+}
+
+.btn i {
+  font-size: 35px;
+  vertical-align: middle
+}
+
+.dashed-border {
+  margin-top: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.item {
+
+}
+
+.item:hover {
+  background: #F3F3F3;
+  border-radius: 10px;
+}
+
+  .item > a > span.ng-binding {
+    display: inline-block;
+    height: 63px;
+    line-height: 63px;
+  }
+
+  .item .icon {
+    width: 74px;
+    position: relative;
+    cursor: pointer;
+    float: left;
+    height: 63px;
+  }
+
+    .item .icon .document {
+      height: 46px;
+      border-radius: 2px;
+      width: 44px;
+      margin: 10px 0 2px 5px;
+      border: 1px solid #d2dbde;
+      background-image: url("images/sprites.png");
+      background-position: 8px -2333px;
+      background-repeat: no-repeat;
+      background-color: white;
+    }
+
+      .item .icon .document span {
+        font-size: 9px;
+        font-weight: 700;
+        color: #529fd2;
+        text-transform: uppercase;
+        text-align: center;
+        width: 100%;
+        display: block;
+        padding-top: 5px;
+      }
