@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Angular Google Picker</title>
+    <meta charset="UTF-8">
 
     <!-- Bootstrap / Fontawesome -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -23,15 +24,20 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
   </head>
-  <body ng-app="GooglePickerExample" ng-controller="ExampleCtrl">
+  <body ng-app="GooglePickerExample" ng-controller="ExampleCtrl" ng-init="initialize()">
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="text-center">
             <img src="images/logo-drive.png" class="logo" alt="Drive logo" />
             <div class="heading-headline">
-              Angular Google Picker
+              Angular Google Picker {{ selectedLocale.name }}
             </div>
+
+            <p>
+              The plugin also support locales, which allow you to open the Picker using the language of your choice :
+              <a href="#" data-toggle="modal" data-target="#language">Select a language</a>
+            </p>
 
             <div>
               <a href="javascript:;" lk-google-picker picker-files="files" class="btn btn-2 btn-2c btn-blue">
@@ -69,5 +75,34 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal language select -->
+    <div class="modal fade" id="language" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Select a language</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <p>
+                  More languages at <a href="https://developers.google.com/picker/docs/" target="_blank">https://developers.google.com/picker/docs/</a>
+                </p>
+                <select ng-model="selectedLocale" ng-change="changeLocale(selectedLocale)" ng-options="l as l.name for l in languages" class="form-control">
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-2 btn-2c btn-blue" data-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>

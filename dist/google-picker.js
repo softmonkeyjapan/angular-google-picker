@@ -16,6 +16,7 @@ angular.module('lk-google-picker', [])
   this.scopes   = [];
   this.features = [];
   this.views    = [];
+  this.locale   = 'en'; // Default to English
 
   /**
    * Provider factory $get method
@@ -27,7 +28,8 @@ angular.module('lk-google-picker', [])
       clientId : this.clientId,
       scopes   : this.scopes,
       features : this.features,
-      views    : this.views
+      views    : this.views,
+      locale   : this.locale
     }
   };
 
@@ -38,51 +40,6 @@ angular.module('lk-google-picker', [])
     for (key in config) {
       this[key] = config[key];
     }
-  };
-
-  /**
-   * Set the Google API key
-   * apiKey : Developer/Api key as String
-   */
-  this.setApiKey = function(apiKey) {
-    this.apiKey = apiKey;
-    return this;
-  };
-
-  /**
-   * Set the Google client id
-   * clientId : Client id as String
-   */
-  this.setClientId = function(clientId) {
-    this.clientId = clientId;
-    return this;
-  };
-
-  /**
-   * Set the Google API scopes to be used
-   * scopes : Array of scopes to use
-   */
-  this.setScopes = function(scopes) {
-    this.scopes = scopes;
-    return this;
-  };
-
-  /**
-   * Set the Google API PickerBuilder enable features
-   * features : Array of features to enable
-   */
-  this.setFeatures = function(features) {
-    this.features = features;
-    return this;
-  };
-
-  /**
-   * Set the Google API PickerBuilder views to add
-   * features : Array of features to enable
-   */
-  this.setViews = function(views) {
-    this.views = views;
-    return this;
   };
 })
 
@@ -134,6 +91,7 @@ angular.module('lk-google-picker', [])
        */
       function openDialog() {
         var picker = new google.picker.PickerBuilder()
+                               .setLocale(lkGoogleSettings.locale)
                                .setDeveloperKey(lkGoogleSettings.apiKey)
                                .setOAuthToken(accessToken)
                                .setCallback(pickerResponse);

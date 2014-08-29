@@ -72,7 +72,7 @@ You'll notice here the usage of `picker-files`. You need to pass here a scope th
 
 # Configuration  
 
-In order to work, Google Picker needs to connect to the Google API using an application credentials (Api Key and client ID). For more information on how to create an application/project, please refer to [https://developers.google.com/drive/web/](https://developers.google.com/drive/web/). To do so, you'll need to configure the service. There's severals ways to do it.  
+In order to work, Google Picker needs to connect to the Google API using an application credentials (Api Key and client ID). For more information on how to create an application/project, please refer to [https://developers.google.com/drive/web/](https://developers.google.com/drive/web/). To do so, you'll need to configure the service.
 
 
 ### Using configure(options)
@@ -82,27 +82,14 @@ angular.module('myApp', ['lk-google-picker'])
 
 .config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
 
-  // Configure the API credentials here
   lkGoogleSettingsProvider.configure({
     apiKey   : 'YOUR_API_KEY',
     clientId : 'YOUR_CLIENT_ID',
-    scopes   : ['https://www.googleapis.com/auth/drive', 'another_scope', 'and_another']
+    scopes   : ['https://www.googleapis.com/auth/drive', 'another_scope', 'and_another'],
+    locale   : 'ja',
+    features : ['..', '..'],
+    views    : ['..', '..']
   });
-}])
-```
-
-
-### Using setters  
-
-```js
-angular.module('myApp', ['lk-google-picker'])
-
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
-
-  // Configure the API credentials here
-  lkGoogleSettingsProvider.setApiKey('YOUR_API_KEY')
-                          .setClientId('YOUR_CLIENT_ID')
-                          .setScopes(['https://www.googleapis.com/auth/drive']);
 }])
 ```
 
@@ -114,7 +101,7 @@ The Picker use the concept of views and features that allow you to customize it.
 angular.module('myApp', ['lk-google-picker'])
 
 .config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
-  lkGoogleSettingsProvider.setFeatures(['MULTISELECT_ENABLED', 'ANOTHER_ONE']);
+  lkGoogleSettingsProvider.features(['MULTISELECT_ENABLED', 'ANOTHER_ONE']);
 }])
 ```
 
@@ -129,7 +116,7 @@ Views are objects that needs to be instanciate using the namespace `google.picke
 angular.module('myApp', ['lk-google-picker'])
 
 .config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
-  lkGoogleSettingsProvider.setViews([
+  lkGoogleSettingsProvider.views([
     'DocsUploadView()',
     'DocsView()'
   ]);
