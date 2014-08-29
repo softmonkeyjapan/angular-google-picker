@@ -1,0 +1,11 @@
+{
+  "name": "angular-google-picker",
+  "version": "0.0.1",
+  "description": "An AngularJs directive that interact with the Google API Picker",
+  "author": "Loic Kartono <contact@kartono-loic.com> (http://www.kartono-loic.com)",
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^0.3.2"
+  }
+}
