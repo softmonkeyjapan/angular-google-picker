@@ -1,0 +1,25 @@
+{
+  "name": "angular-google-picker",
+  "version": "0.0.1",
+  "homepage": "https://github.com/softmonkeyjapan/angular-google-picker",
+  "authors": [
+    "Loic Kartono <contact@kartono-loic.com>"
+  ],
+  "description": "An AngularJs directive that interact with the Google Picker API",
+  "keywords": [
+    "Angular",
+    "Google",
+    "Picker"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "example"
+  ],
+  "dependencies": {
+    "angular-mocks": "~1.2.23"
+  }
+}
