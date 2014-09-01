@@ -7,7 +7,7 @@ Angular directive that interact with the Google API Picker :
 
 **Requirements:** AngularJS 1.2+
 
-**File Size:** 1.9Kb minified
+**File Size:** 1.67Kb minified
 
 
 # Usage
