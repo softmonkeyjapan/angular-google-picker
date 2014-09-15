@@ -16,9 +16,12 @@ describe('lkGoogleSettingsProvider', function() {
     it('should have default values', inject(function(lkGoogleSettings) {
       expect(lkGoogleSettings.apiKey).toBeNull();
       expect(lkGoogleSettings.clientId).toBeNull();
-      expect(lkGoogleSettings.scopes).toEqual([]);
-      expect(lkGoogleSettings.features).toEqual([]);
-      expect(lkGoogleSettings.views).toEqual([]);
+      expect(lkGoogleSettings.scopes).toEqual(['https://www.googleapis.com/auth/drive']);
+      expect(lkGoogleSettings.features).toEqual(['MULTISELECT_ENABLED']);
+      expect(lkGoogleSettings.views).toEqual([
+        'DocsView().setIncludeFolders(true)',
+        'DocsUploadView().setIncludeFolders(true)'
+      ]);
       expect(lkGoogleSettings.locale).toBe('en');
     }));
 

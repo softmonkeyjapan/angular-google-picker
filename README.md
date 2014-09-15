@@ -105,6 +105,8 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
+**Default** : `MULTISELECT_ENABLED` feature is use as default.
+
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 
 
@@ -135,6 +137,8 @@ angular.module('myApp', ['lk-google-picker'])
   ]);
 }])
 ```
+
+**Default** : `DocsUploadView` and `DocsView` are use as default.
 
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 

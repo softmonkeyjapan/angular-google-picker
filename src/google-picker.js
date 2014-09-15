@@ -13,9 +13,12 @@ angular.module('lk-google-picker', [])
 .provider('lkGoogleSettings', function() {
   this.apiKey   = null;
   this.clientId = null;
-  this.scopes   = [];
-  this.features = [];
-  this.views    = [];
+  this.scopes   = ['https://www.googleapis.com/auth/drive'];
+  this.features = ['MULTISELECT_ENABLED'];
+  this.views    = [
+    'DocsView().setIncludeFolders(true)',
+    'DocsUploadView().setIncludeFolders(true)'
+  ];
   this.locale   = 'en'; // Default to English
 
   /**
