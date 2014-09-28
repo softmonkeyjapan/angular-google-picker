@@ -10,6 +10,19 @@ Angular directive that interact with the Google API Picker :
 **File Size:** 1.67Kb minified
 
 
+# Installation
+
+1. Using Bower (recommended)
+
+  ```Bash
+  bower install angular-google-picker
+  ```
+
+2. Manually
+
+Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.0.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.0.zip)
+
+
 # Usage
 
 1. Include Google client and api script in your layout  
