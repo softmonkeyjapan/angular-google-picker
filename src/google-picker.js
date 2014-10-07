@@ -68,7 +68,7 @@ angular.module('lk-google-picker', [])
        * If user is already logged in, then open the Picker modal
        */
       function onApiAuthLoad() {
-        if (gapi.auth.getToken()) {
+        if (gapi.auth.getToken() && accessToken) {
           openDialog();
         } else {
           gapi.auth.authorize({
