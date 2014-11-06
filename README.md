@@ -20,7 +20,7 @@ Angular directive that interact with the Google API Picker :
 
 2. Manually
 
-Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.1.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.1.zip)
+Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.2.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.2.zip)
 
 
 # Usage
@@ -173,7 +173,6 @@ You should now be able to browse to `localhost:8000` and see it in action from y
 # Demo
 
 A demo version is available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/).
-Note that clicking on `Pick files` button may fail the first time because your browser may block the popup. Allow it or click again to make it works.
 
 
 # License:

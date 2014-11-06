@@ -130,6 +130,9 @@ angular.module('lk-google-picker', [])
         }
       }
 
+      gapi.load('auth');
+      gapi.load('picker');
+
       element.bind('click', function(e) {
         instanciate();
       });
