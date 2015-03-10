@@ -1,9 +1,9 @@
 angular-google-picker
 =====================
 
-Angular directive that interact with the Google API Picker :  
+Angular directive that interact with the Google API Picker :
 * [https://developers.google.com/picker/docs/](https://developers.google.com/picker/)
-* [https://developers.google.com/picker/docs/](https://developers.google.com/picker/docs/)  
+* [https://developers.google.com/picker/docs/](https://developers.google.com/picker/docs/)
 
 **Requirements:** AngularJS 1.2+
 
@@ -15,17 +15,23 @@ Angular directive that interact with the Google API Picker :
 1. Using Bower (recommended)
 
   ```Bash
-  bower install angular-google-picker
+  bower install angular-google-picker --save
   ```
 
-2. Manually
+2. Using NPM
+
+  ```bash
+  npm install angular-google-picker --save
+  ```
+
+3. Manually
 
 Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.2.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.2.zip)
 
 
 # Usage
 
-1. Include Google client and api script in your layout  
+1. Include Google client and api script in your layout
 
   ```html
   <script src="http://apis.google.com/js/client.js"></script>
@@ -38,7 +44,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.2
   angular.module('myApp', ['lk-google-picker'])
   ```
 
-3. Configure the plugin (see below **configuration** section)  
+3. Configure the plugin (see below **configuration** section)
 
 4. Create a scope to handle files that will be selected
 
@@ -80,10 +86,10 @@ You'll notice here the usage of `picker-files`. You need to pass here a scope th
       ...
     }
   ]
-  ```  
+  ```
 
 
-# Configuration  
+# Configuration
 
 In order to work, Google Picker needs to connect to the Google API using an application credentials (Api Key and client ID). For more information on how to create an application/project, please refer to [https://developers.google.com/drive/web/](https://developers.google.com/drive/web/). To do so, you'll need to configure the service.
 
@@ -106,7 +112,7 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-### Features  
+### Features
 
 The Picker use the concept of views and features that allow you to customize it. The service provider allow you to enable some features to the Picker the same way you define your API Key or client ID (using either configure or setters).
 
@@ -175,5 +181,5 @@ You should now be able to browse to `localhost:8000` and see it in action from y
 A demo version is available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/).
 
 
-# License:
+# License
 Licensed under the MIT license
