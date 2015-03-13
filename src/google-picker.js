@@ -40,7 +40,7 @@ angular.module('lk-google-picker', [])
    * Set the API config params using a hash
    */
   this.configure = function(config) {
-    for (key in config) {
+    for (var key in config) {
       this[key] = config[key];
     }
   };
