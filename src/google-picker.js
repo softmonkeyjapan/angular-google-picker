@@ -107,7 +107,7 @@ angular.module('lk-google-picker', [])
 
         if (lkGoogleSettings.views.length > 0) {
           angular.forEach(lkGoogleSettings.views, function(view, key) {
-            var view = eval('new google.picker.' + view);
+            view = eval('new google.picker.' + view);
             picker.addView(view);
           });
         }
