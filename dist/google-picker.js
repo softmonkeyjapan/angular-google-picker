@@ -25,7 +25,9 @@ angular.module('lk-google-picker', [])
    * Provider factory $get method
    * Return Google Picker API settings
    */
-  this.$get = function() {
+  this.$get = function($window) {
+    this.origin = this.origin || $window.location.protocol + '//' + $window.location.host;
+
     return {
       apiKey   : this.apiKey,
       clientId : this.clientId,
@@ -40,7 +42,7 @@ angular.module('lk-google-picker', [])
    * Set the API config params using a hash
    */
   this.configure = function(config) {
-    for (key in config) {
+    for (var key in config) {
       this[key] = config[key];
     }
   };
@@ -68,8 +70,10 @@ angular.module('lk-google-picker', [])
        * If user is already logged in, then open the Picker modal
        */
       function onApiAuthLoad() {
-        if (gapi.auth.getToken() && accessToken) {
-          openDialog();
+        var authToken = gapi.auth.getToken();
+
+        if (authToken) {
+          handleAuthResult(authToken);
         } else {
           gapi.auth.authorize({
             'client_id' : lkGoogleSettings.clientId,
@@ -107,7 +111,7 @@ angular.module('lk-google-picker', [])
 
         if (lkGoogleSettings.views.length > 0) {
           angular.forEach(lkGoogleSettings.views, function(view, key) {
-            var view = eval('new google.picker.' + view);
+            view = eval('new google.picker.' + view);
             picker.addView(view);
           });
         }
