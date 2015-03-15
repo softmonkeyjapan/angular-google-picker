@@ -25,18 +25,17 @@ angular.module('lk-google-picker', [])
    * Provider factory $get method
    * Return Google Picker API settings
    */
-  this.$get = function($window) {
-    this.origin = this.origin || $window.location.protocol + '//' + $window.location.host;
-
+  this.$get = ['$window', function($window) {
     return {
       apiKey   : this.apiKey,
       clientId : this.clientId,
       scopes   : this.scopes,
       features : this.features,
       views    : this.views,
-      locale   : this.locale
+      locale   : this.locale,
+      origin   : this.origin || $window.location.protocol + '//' + $window.location.host
     }
-  };
+  }];
 
   /**
    * Set the API config params using a hash
@@ -101,7 +100,8 @@ angular.module('lk-google-picker', [])
                                .setLocale(lkGoogleSettings.locale)
                                .setDeveloperKey(lkGoogleSettings.apiKey)
                                .setOAuthToken(accessToken)
-                               .setCallback(pickerResponse);
+                               .setCallback(pickerResponse)
+                               .setOrigin(lkGoogleSettings.origin);
 
         if (lkGoogleSettings.features.length > 0) {
           angular.forEach(lkGoogleSettings.features, function(feature, key) {
