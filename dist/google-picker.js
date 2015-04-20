@@ -98,7 +98,7 @@ angular.module('lk-google-picker', [])
       function openDialog() {
         var picker = new google.picker.PickerBuilder()
                                .setLocale(lkGoogleSettings.locale)
-                               .setDeveloperKey(lkGoogleSettings.apiKey)
+                               // .setDeveloperKey(lkGoogleSettings.apiKey)
                                .setOAuthToken(accessToken)
                                .setCallback(pickerResponse)
                                .setOrigin(lkGoogleSettings.origin);
