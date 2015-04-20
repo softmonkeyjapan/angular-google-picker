@@ -51,7 +51,8 @@ angular.module('lk-google-picker', [])
   return {
     restrict: 'A',
     scope: {
-      pickerFiles: '='
+      pickerFiles: '=',
+      pickerCallback: '='
     },
     link: function(scope, element, attrs) {
       var accessToken = null;
@@ -129,6 +130,7 @@ angular.module('lk-google-picker', [])
             angular.forEach(data.docs, function(file, index) {
               scope.pickerFiles.push(file);
             });
+            scope.pickerCallback(scope.pickerFiles);
             scope.$apply();
           });
         }
