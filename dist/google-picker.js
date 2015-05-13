@@ -51,7 +51,8 @@ angular.module('lk-google-picker', [])
   return {
     restrict: 'A',
     scope: {
-      pickerFiles: '='
+      pickerFiles: '=',
+      pickerCallback: '='
     },
     link: function(scope, element, attrs) {
       var accessToken = null;
@@ -98,7 +99,7 @@ angular.module('lk-google-picker', [])
       function openDialog() {
         var picker = new google.picker.PickerBuilder()
                                .setLocale(lkGoogleSettings.locale)
-                               .setDeveloperKey(lkGoogleSettings.apiKey)
+                               // .setDeveloperKey(lkGoogleSettings.apiKey)
                                .setOAuthToken(accessToken)
                                .setCallback(pickerResponse)
                                .setOrigin(lkGoogleSettings.origin);
@@ -129,6 +130,7 @@ angular.module('lk-google-picker', [])
             angular.forEach(data.docs, function(file, index) {
               scope.pickerFiles.push(file);
             });
+            scope.pickerCallback(scope.pickerFiles);
             scope.$apply();
           });
         }

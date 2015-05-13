@@ -51,7 +51,8 @@ angular.module('lk-google-picker', [])
   return {
     restrict: 'A',
     scope: {
-      pickerFiles: '='
+      pickerFiles: '=',
+      pickerCallback: '='
     },
     link: function(scope, element, attrs) {
       var accessToken = null;
@@ -65,26 +66,20 @@ angular.module('lk-google-picker', [])
       }
 
       /**
-       * OAuth autorization
-       * If user is already logged in, then open the Picker modal
+       * For users with multiple google accounts, pass the Google UID
+       * to get the proper accessToken [for the right files] every time.
+       * borrowed from http://stackoverflow.com/a/13379472/1444541
        */
       function onApiAuthLoad() {
-        var authToken = gapi.auth.getToken();
-
-        if (authToken) {
-          handleAuthResult(authToken);
-        } else {
-          gapi.auth.authorize({
-            'client_id' : lkGoogleSettings.clientId,
-            'scope'     : lkGoogleSettings.scopes,
-            'immediate' : false
-          }, handleAuthResult);
-        }
+        gapi.auth.authorize({
+          'client_id' : lkGoogleSettings.clientId,
+          'scope'     : lkGoogleSettings.scopes,
+          'immediate' : true,
+          'user_id'   : attrs.googleId,
+          'authuser'  : -1
+        }, handleAuthResult);
       }
 
-      /**
-       * Google API OAuth response
-       */
       function handleAuthResult(result) {
         if (result && !result.error) {
           accessToken = result.access_token;
@@ -98,7 +93,7 @@ angular.module('lk-google-picker', [])
       function openDialog() {
         var picker = new google.picker.PickerBuilder()
                                .setLocale(lkGoogleSettings.locale)
-                               .setDeveloperKey(lkGoogleSettings.apiKey)
+                               // .setDeveloperKey(lkGoogleSettings.apiKey)
                                .setOAuthToken(accessToken)
                                .setCallback(pickerResponse)
                                .setOrigin(lkGoogleSettings.origin);
@@ -129,6 +124,7 @@ angular.module('lk-google-picker', [])
             angular.forEach(data.docs, function(file, index) {
               scope.pickerFiles.push(file);
             });
+            scope.pickerCallback(scope.pickerFiles);
             scope.$apply();
           });
         }
