@@ -1,7 +1,7 @@
 angular-google-picker
 =====================
 
-Angular directive that interact with the Google API Picker :
+Angular directive that interact with the Google Picker API :
 * [https://developers.google.com/picker/docs/](https://developers.google.com/picker/)
 * [https://developers.google.com/picker/docs/](https://developers.google.com/picker/docs/)
 
@@ -26,7 +26,7 @@ Angular directive that interact with the Google API Picker :
 
 3. Manually
 
-Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.3.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.3.zip)
+Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.4.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.4.zip)
 
 
 # Usage
@@ -51,7 +51,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.1.3
   ```js
   angular.module('myApp', ['lk-google-picker'])
 
-  .controller('ExamplaCtrl', ['$scope', function($scope) {
+  .controller('ExampleCtrl', ['$scope', function ($scope) {
      $scope.files = [];
   }]);
   ```
@@ -99,7 +99,7 @@ In order to work, Google Picker needs to connect to the Google API using an appl
 ```js
 angular.module('myApp', ['lk-google-picker'])
 
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
 
   lkGoogleSettingsProvider.configure({
     apiKey   : 'YOUR_API_KEY',
@@ -119,7 +119,7 @@ The Picker use the concept of views and features that allow you to customize it.
 ```js
 angular.module('myApp', ['lk-google-picker'])
 
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
   lkGoogleSettingsProvider.features(['MULTISELECT_ENABLED', 'ANOTHER_ONE']);
 }])
 ```
@@ -136,7 +136,7 @@ Views are objects that needs to be instanciate using the namespace `google.picke
 ```js
 angular.module('myApp', ['lk-google-picker'])
 
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
   lkGoogleSettingsProvider.views([
     'DocsUploadView()',
     'DocsView()'
@@ -144,12 +144,12 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-**NOTE** : Views classes have some usefull methods such as `setIncludeFolders` or `setStarred` (or any other methods available). In order to use them, just chain them to the class :
+**NOTE** : Views classes have some useful methods such as `setIncludeFolders` or `setStarred` (or any other methods available). In order to use them, just chain them to the class :
 
 ```js
 angular.module('myApp', ['lk-google-picker'])
 
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
   lkGoogleSettingsProvider.setViews([
     'DocsUploadView().setIncludeFolders(true)',
     'DocsView().setStarred(true)'
@@ -160,6 +160,25 @@ angular.module('myApp', ['lk-google-picker'])
 **Default** : `DocsUploadView` and `DocsView` are use as default.
 
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
+
+
+# Callback
+
+If you want to do some logic after selecting files from the picker, you can use the `after-select` attribute and pass it a function from the active scope.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+   $scope.afterSelectCallback = function (files) {
+     // Do something
+   }
+}]);
+```
+
+```html
+<a href="javascript:;" lk-google-picker picker-files="files" after-select="afterSelectCallback(files)">Open my Google Drive</a>
+```
 
 
 # Example
