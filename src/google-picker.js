@@ -10,7 +10,7 @@
 
 angular.module('lk-google-picker', [])
 
-.provider('lkGoogleSettings', function() {
+.provider('lkGoogleSettings', function () {
   this.apiKey   = null;
   this.clientId = null;
   this.scopes   = ['https://www.googleapis.com/auth/drive'];
@@ -25,7 +25,7 @@ angular.module('lk-google-picker', [])
    * Provider factory $get method
    * Return Google Picker API settings
    */
-  this.$get = ['$window', function($window) {
+  this.$get = ['$window', function ($window) {
     return {
       apiKey   : this.apiKey,
       clientId : this.clientId,
@@ -40,26 +40,27 @@ angular.module('lk-google-picker', [])
   /**
    * Set the API config params using a hash
    */
-  this.configure = function(config) {
+  this.configure = function (config) {
     for (var key in config) {
       this[key] = config[key];
     }
   };
 })
 
-.directive('lkGooglePicker', ['lkGoogleSettings', function(lkGoogleSettings) {
+.directive('lkGooglePicker', ['lkGoogleSettings', function (lkGoogleSettings) {
   return {
     restrict: 'A',
     scope: {
-      pickerFiles: '='
+      pickerFiles: '=',
+      afterSelect: '&'
     },
-    link: function(scope, element, attrs) {
+    link: function (scope, element, attrs) {
       var accessToken = null;
 
       /**
        * Load required modules
        */
-      function instanciate() {
+      function instanciate () {
         gapi.load('auth', { 'callback': onApiAuthLoad });
         gapi.load('picker');
       }
@@ -68,7 +69,7 @@ angular.module('lk-google-picker', [])
        * OAuth autorization
        * If user is already logged in, then open the Picker modal
        */
-      function onApiAuthLoad() {
+      function onApiAuthLoad () {
         var authToken = gapi.auth.getToken();
 
         if (authToken) {
@@ -85,7 +86,7 @@ angular.module('lk-google-picker', [])
       /**
        * Google API OAuth response
        */
-      function handleAuthResult(result) {
+      function handleAuthResult (result) {
         if (result && !result.error) {
           accessToken = result.access_token;
           openDialog();
@@ -95,7 +96,7 @@ angular.module('lk-google-picker', [])
       /**
        * Everything is good, open the files picker
        */
-      function openDialog() {
+      function openDialog () {
         var picker = new google.picker.PickerBuilder()
                                .setLocale(lkGoogleSettings.locale)
                                .setDeveloperKey(lkGoogleSettings.apiKey)
@@ -104,13 +105,13 @@ angular.module('lk-google-picker', [])
                                .setOrigin(lkGoogleSettings.origin);
 
         if (lkGoogleSettings.features.length > 0) {
-          angular.forEach(lkGoogleSettings.features, function(feature, key) {
+          angular.forEach(lkGoogleSettings.features, function (feature, key) {
             picker.enableFeature(google.picker.Feature[feature]);
           });
         }
 
         if (lkGoogleSettings.views.length > 0) {
-          angular.forEach(lkGoogleSettings.views, function(view, key) {
+          angular.forEach(lkGoogleSettings.views, function (view, key) {
             view = eval('new google.picker.' + view);
             picker.addView(view);
           });
@@ -123,12 +124,13 @@ angular.module('lk-google-picker', [])
        * Callback invoked when interacting with the Picker
        * data: Object returned by the API
        */
-      function pickerResponse(data) {
+      function pickerResponse (data) {
         if (data.action == google.picker.Action.PICKED) {
-          gapi.client.load('drive', 'v2', function() {
-            angular.forEach(data.docs, function(file, index) {
+          gapi.client.load('drive', 'v2', function () {
+            angular.forEach(data.docs, function (file, index) {
               scope.pickerFiles.push(file);
             });
+            scope.afterSelect();
             scope.$apply();
           });
         }
@@ -137,7 +139,7 @@ angular.module('lk-google-picker', [])
       gapi.load('auth');
       gapi.load('picker');
 
-      element.bind('click', function(e) {
+      element.bind('click', function (e) {
         instanciate();
       });
     }

@@ -1,6 +1,6 @@
 angular.module('GooglePickerExample', ['lk-google-picker'])
 
-.config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
 
   // Configure the API credentials here
   lkGoogleSettingsProvider.configure({
@@ -9,13 +9,13 @@ angular.module('GooglePickerExample', ['lk-google-picker'])
   });
 }])
 
-.filter('getExtension', function() {
-  return function(url) {
+.filter('getExtension', function () {
+  return function (url) {
     return url.split('.').pop();
   };
 })
 
-.controller('ExampleCtrl', ['$scope', 'lkGoogleSettings', function($scope, lkGoogleSettings) {
+.controller('ExampleCtrl', ['$scope', 'lkGoogleSettings', function ($scope, lkGoogleSettings) {
   $scope.files     = [];
   $scope.languages = [
     { code: 'en', name: 'English' },
@@ -25,16 +25,21 @@ angular.module('GooglePickerExample', ['lk-google-picker'])
   ]
 
   // Check for the current language depending on lkGoogleSettings.locale
-  $scope.initialize = function() {
-    angular.forEach($scope.languages, function(language, index) {
+  $scope.initialize = function () {
+    angular.forEach($scope.languages, function (language, index) {
       if (lkGoogleSettings.locale === language.code) {
         $scope.selectedLocale = $scope.languages[index];
       }
     });
   }
 
+  // Callback triggered after files selection
+  $scope.afterSelectCallback = function (files) {
+    alert("After Select Callback\n" + (files.length) + " file(s) selected");
+  }
+
   // Define the locale to use
-  $scope.changeLocale = function(locale) {
+  $scope.changeLocale = function (locale) {
     lkGoogleSettings.locale = locale.code;
   }
 }]);
