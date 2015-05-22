@@ -51,8 +51,7 @@ angular.module('lk-google-picker', [])
   return {
     restrict: 'A',
     scope: {
-      pickerFiles: '=',
-      afterSelect: '&'
+      afterSelect: '='
     },
     link: function (scope, element, attrs) {
       var accessToken = null;
@@ -126,10 +125,7 @@ angular.module('lk-google-picker', [])
       function pickerResponse (data) {
         if (data.action == google.picker.Action.PICKED) {
           gapi.client.load('drive', 'v2', function () {
-            angular.forEach(data.docs, function (file, index) {
-              scope.pickerFiles.push(file);
-            });
-            scope.afterSelect();
+            scope.afterSelect(data);
             scope.$apply();
           });
         }
