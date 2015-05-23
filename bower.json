@@ -1,8 +1,9 @@
 {
   "name": "angular-google-picker",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "authors": [
-    "Loic Kartono <contact@kartono-loic.com>"
+    "Loic Kartono <contact@kartono-loic.com>",
+    "Fran Dios <me@frandiox.com>"
   ],
   "description": "An AngularJs directive that interact with the Google Picker API",
   "main": "dist/google-picker.js",
