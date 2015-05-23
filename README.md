@@ -172,25 +172,6 @@ angular.module('myApp', ['lk-google-picker'])
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 
 
-# Callback
-
-If you want to do some logic after selecting files from the picker, you can use the `after-select` attribute and pass it a function from the active scope.
-
-```js
-angular.module('myApp', ['lk-google-picker'])
-
-.controller('ExampleCtrl', ['$scope', function ($scope) {
-   $scope.afterSelectCallback = function (files) {
-     // Do something
-   }
-}]);
-```
-
-```html
-<a href="javascript:;" lk-google-picker picker-files="files" after-select="afterSelectCallback(files)">Open my Google Drive</a>
-```
-
-
 # Example
 
 The demo version available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/) can be found in the `example` folder.
