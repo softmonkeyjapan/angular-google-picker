@@ -26,7 +26,7 @@ Angular directive that interact with the Google Picker API :
 
 3. Manually
 
-Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.0.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.0.zip)
+Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1.zip)
 
 
 # Usage
