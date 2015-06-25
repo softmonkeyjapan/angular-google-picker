@@ -54,14 +54,18 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.0
   .controller('ExampleCtrl', ['$scope', function ($scope) {
      $scope.files = [];
 
-     $scope.afterSelectCallback = function (files) {
-       if (data.action === 'picked') {
-         angular.forEach(data.docs, function (file, index) {
-           $scope.files.push(file);
-         });
-       } else if (data.action === 'cancel') {
-         console.log('Request canceled');
-       }
+     $scope.onLoaded = function () {
+       console.log('Google Picker loaded!');
+     }
+
+     $scope.onPicked = function (docs) {
+       angular.forEach(data.docs, function (file, index) {
+         $scope.files.push(file);
+       });
+     }
+
+     $scope.onCancel = function () {
+       console.log('Google picker close/cancel!');
      }
   }]);
   ```
@@ -69,7 +73,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.0
 5. Add the directive to your HTML element
 
   ```html
-  <a href="javascript:;" lk-google-picker after-select="afterSelectCallback">Open my Google Drive</a>
+  <a href="javascript:;" lk-google-picker on-picked="onPicked" on-loaded="onLoaded" on-cancel="onCancel">Open my Google Drive</a>
   ```
 
 6. That's it, you're done!
@@ -171,6 +175,64 @@ angular.module('myApp', ['lk-google-picker'])
 
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 
+
+# Callbacks
+
+The directive provide you 3 callbacks that you can use in order to work with the Picker.
+
+### onLoaded
+
+This callback is triggered after the picker has been initialized and shown on the page.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+  $scope.onLoaded = function () {
+    console.log('Google Picker loaded!');
+  }
+}]);
+```
+
+```html
+<a href="javascript:;" lk-google-picker on-loaded="onLoaded">Open my Google Drive</a>
+```
+
+### onPicked
+
+This callback is triggered after you select files and click on the `select` button from the Picker.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+  $scope.onPicked = function (docs) {
+    // docs contains the list of google documents object as shown above.
+  }
+}]);
+```
+
+```html
+<a href="javascript:;" lk-google-picker on-picked="onPicked">Open my Google Drive</a>
+```
+
+### onCancel
+
+This callback is triggered after the picker has been closed by clicking on the cancel button from the picker.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+  $scope.onCancel = function () {
+    console.log('Google picker close/cancel!');
+  }
+}]);
+```
+
+```html
+<a href="javascript:;" lk-google-picker on-loaded="onLoaded">Open my Google Drive</a>
+```
 
 # Example
 

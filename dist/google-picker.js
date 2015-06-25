@@ -51,7 +51,9 @@ angular.module('lk-google-picker', [])
   return {
     restrict: 'A',
     scope: {
-      afterSelect: '='
+      onLoaded: '=',
+      onCancel: '=',
+      onPicked: '='
     },
     link: function (scope, element, attrs) {
       var accessToken = null;
@@ -123,12 +125,18 @@ angular.module('lk-google-picker', [])
        * data: Object returned by the API
        */
       function pickerResponse (data) {
-        if (data.action == google.picker.Action.PICKED) {
-          gapi.client.load('drive', 'v2', function () {
-            scope.afterSelect(data);
-            scope.$apply();
-          });
-        }
+        gapi.client.load('drive', 'v2', function () {
+          if (data.action == google.picker.Action.LOADED && scope.onLoaded) {
+            scope.onLoaded();
+          }
+          if (data.action == google.picker.Action.CANCEL && scope.onCancel) {
+            scope.onCancel();
+          }
+          if (data.action == google.picker.Action.PICKED && scope.onPicked) {
+            scope.onPicked(data.docs);
+          }
+          scope.$apply();
+        });
       }
 
       gapi.load('auth');

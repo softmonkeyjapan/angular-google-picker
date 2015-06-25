@@ -33,15 +33,21 @@ angular.module('GooglePickerExample', ['lk-google-picker'])
     });
   };
 
-  // Callback triggered after files selection
-  $scope.afterSelectCallback = function (data) {
-    if (data.action === 'picked') {
-      angular.forEach(data.docs, function (file, index) {
-        $scope.files.push(file);
-      });
-    } else if (data.action === 'cancel') {
-      console.log('Request canceled');
-    }
+  // Callback triggered after Picker is shown
+  $scope.onLoaded = function () {
+    console.log('Google Picker loaded!');
+  }
+
+  // Callback triggered after selecting files
+  $scope.onPicked = function (docs) {
+    angular.forEach(docs, function (file, index) {
+      $scope.files.push(file);
+    });
+  }
+
+  // Callback triggered after clicking on cancel
+  $scope.onCancel = function () {
+    console.log('Google picker close/cancel!');
   }
 
   // Define the locale to use
