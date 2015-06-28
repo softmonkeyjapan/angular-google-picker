@@ -7,7 +7,7 @@ Angular directive that interact with the Google Picker API :
 
 **Requirements:** AngularJS 1.2+
 
-**File Size:** 1.67Kb minified
+**File Size:** 2.07Kb minified
 
 
 # Installation
@@ -79,7 +79,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1
 6. That's it, you're done!
 
 
-You'll notice here the usage of `after-select`. You need to pass here a callback that will handle the data received. The callback receives a "data" object that contains an "action" member with the values "picked" or "canceled" depending on the user action. The "docs" member will contain an array with the selected files. Every file is a json object that looks like :
+Every file is a json object that looks like :
 
   ```json
   [
@@ -231,7 +231,7 @@ angular.module('myApp', ['lk-google-picker'])
 ```
 
 ```html
-<a href="javascript:;" lk-google-picker on-loaded="onLoaded">Open my Google Drive</a>
+<a href="javascript:;" lk-google-picker on-cancel="onCancel">Open my Google Drive</a>
 ```
 
 # Example
