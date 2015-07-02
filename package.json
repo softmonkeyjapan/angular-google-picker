@@ -4,7 +4,10 @@
   "description": "An AngularJs directive that interact with the Google API Picker",
   "author": "Loic Kartono <contact@kartono-loic.com> (http://www.kartono-loic.com)",
   "contributors": [
-    { "name": "Fran Dios", "email": "me@frandiox.com" }
+    {
+      "name": "Fran Dios",
+      "email": "me@frandiox.com"
+    }
   ],
   "devDependencies": {
     "gulp": "^3.8.8",
