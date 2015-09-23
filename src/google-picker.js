@@ -51,9 +51,9 @@
     return {
       restrict: 'A',
       scope: {
-        onLoaded: '=',
-        onCancel: '=',
-        onPicked: '='
+        onLoaded: '&',
+        onCancel: '&',
+        onPicked: '&'
       },
       link: function (scope, element, attrs) {
         var accessToken = null;
@@ -127,13 +127,13 @@
         function pickerResponse (data) {
           gapi.client.load('drive', 'v2', function () {
             if (data.action == google.picker.Action.LOADED && scope.onLoaded) {
-              scope.onLoaded();
+              (scope.onLoaded || angular.noop)();
             }
             if (data.action == google.picker.Action.CANCEL && scope.onCancel) {
-              scope.onCancel();
+              (scope.onCancel || angular.noop)();
             }
             if (data.action == google.picker.Action.PICKED && scope.onPicked) {
-              scope.onPicked(data.docs);
+              (scope.onPicked || angular.noop)({docs: data.docs});
             }
             scope.$apply();
           });

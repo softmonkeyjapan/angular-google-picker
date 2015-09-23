@@ -73,7 +73,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1
 5. Add the directive to your HTML element
 
   ```html
-  <a href="javascript:;" lk-google-picker on-picked="onPicked" on-loaded="onLoaded" on-cancel="onCancel">Open my Google Drive</a>
+  <a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()">Open my Google Drive</a>
   ```
 
 6. That's it, you're done!
@@ -195,7 +195,7 @@ angular.module('myApp', ['lk-google-picker'])
 ```
 
 ```html
-<a href="javascript:;" lk-google-picker on-loaded="onLoaded">Open my Google Drive</a>
+<a href="javascript:;" lk-google-picker on-loaded="onLoaded()">Open my Google Drive</a>
 ```
 
 ### onPicked
