@@ -7,7 +7,7 @@ Angular directive that interact with the Google Picker API :
 
 **Requirements:** AngularJS 1.2+
 
-**File Size:** 2.07Kb minified
+**File Size:** 2.1Kb minified
 
 
 # Installation
@@ -26,7 +26,7 @@ Angular directive that interact with the Google Picker API :
 
 3. Manually
 
-Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.1.zip)
+Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2.zip)
 
 
 # Usage
@@ -166,7 +166,8 @@ angular.module('myApp', ['lk-google-picker'])
 .config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
   lkGoogleSettingsProvider.setViews([
     'DocsUploadView().setIncludeFolders(true)',
-    'DocsView().setStarred(true)'
+    'DocsView().setStarred(true)',
+    'DocsView(google.picker.ViewId.FOLDERS).setSelectFolderEnabled(true)'
   ]);
 }])
 ```
