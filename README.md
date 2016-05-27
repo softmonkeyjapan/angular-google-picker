@@ -1,5 +1,8 @@
-angular-google-picker [![npm version](https://badge.fury.io/js/angular-google-picker.svg)](http://badge.fury.io/js/angular-google-picker) [![Bower version](https://badge.fury.io/bo/angular-google-picker.svg)](http://badge.fury.io/bo/angular-google-picker)
+angular-google-picker
 =====================
+
+[![npm version](https://badge.fury.io/js/angular-google-picker.svg)](http://badge.fury.io/js/angular-google-picker) [![Bower version](https://badge.fury.io/bo/angular-google-picker.svg)](http://badge.fury.io/bo/angular-google-picker) [![Coverage Status](https://coveralls.io/repos/github/softmonkeyjapan/angular-google-picker/badge.svg?branch=master)](https://coveralls.io/github/softmonkeyjapan/angular-google-picker?branch=master)
+[![Build Status](https://travis-ci.org/softmonkeyjapan/angular-google-picker.svg?branch=master)](https://travis-ci.org/softmonkeyjapan/angular-google-picker)
 
 Angular directive that interact with the Google Picker API :
 * [Google Picker API Overview](https://developers.google.com/picker/)
@@ -59,7 +62,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2
      }
 
      $scope.onPicked = function (docs) {
-       angular.forEach(data.docs, function (file, index) {
+       angular.forEach(docs, function (file, index) {
          $scope.files.push(file);
        });
      }
@@ -164,7 +167,7 @@ angular.module('myApp', ['lk-google-picker'])
 angular.module('myApp', ['lk-google-picker'])
 
 .config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
-  lkGoogleSettingsProvider.setViews([
+  lkGoogleSettingsProvider.views([
     'DocsUploadView().setIncludeFolders(true)',
     'DocsView().setStarred(true)',
     'DocsView(google.picker.ViewId.FOLDERS).setSelectFolderEnabled(true)'
