@@ -1,0 +1,8 @@
+sudo: false
+language: node_js
+node_js:
+  - "stable"
+  - "4"
+
+after_success:
+  - "cat coverage/lcov/lcov.info | ./node_modules/.bin/coveralls"
