@@ -2,6 +2,9 @@ var gulp   = require('gulp');
 var KarmaServer = require('karma').Server;
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var conventionalChangelog = require('gulp-conventional-changelog');
+
+gulp.task('default', ['watch']);
 
 // Copy non-uglify version to "dist"
 gulp.task('copy', ['test'], function () {
@@ -30,4 +33,10 @@ gulp.task('watch', function () {
   gulp.watch('test/**/*.spec.js', ['test']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('changelog', function () {
+  return gulp.src('CHANGELOG.md', {buffer: false})
+    .pipe(conventionalChangelog({
+      preset: 'angular'
+    }))
+    .pipe(gulp.dest('.'));
+});

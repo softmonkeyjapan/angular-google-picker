@@ -5,9 +5,10 @@
   "author": "Loic Kartono <contact@kartono-loic.com> (http://www.kartono-loic.com)",
   "scripts": {
     "postinstall": "bower install",
-    "prepublish": "npm test",
     "pretest": "rimraf coverage/",
-    "test": "gulp test"
+    "test": "gulp test",
+    "preversion": "npm test",
+    "postversion": "gulp changelog && git commit -a --amend --no-edit && npm publish"
   },
   "contributors": [
     {
@@ -20,10 +21,11 @@
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
     "gulp": "^3.8.8",
+    "gulp-conventional-changelog": "^1.1.0",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.0.1",
     "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
+    "karma": "^1.1.0",
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
