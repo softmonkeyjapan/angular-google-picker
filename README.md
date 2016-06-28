@@ -1,8 +1,11 @@
 angular-google-picker
 =====================
 
-[![npm version](https://badge.fury.io/js/angular-google-picker.svg)](http://badge.fury.io/js/angular-google-picker) [![Bower version](https://badge.fury.io/bo/angular-google-picker.svg)](http://badge.fury.io/bo/angular-google-picker) [![Coverage Status](https://coveralls.io/repos/github/softmonkeyjapan/angular-google-picker/badge.svg?branch=master)](https://coveralls.io/github/softmonkeyjapan/angular-google-picker?branch=master)
+[![npm version](https://badge.fury.io/js/angular-google-picker.svg)](http://badge.fury.io/js/angular-google-picker)
+[![Bower version](https://badge.fury.io/bo/angular-google-picker.svg)](http://badge.fury.io/bo/angular-google-picker)
+[![Coverage Status](https://coveralls.io/repos/github/softmonkeyjapan/angular-google-picker/badge.svg?branch=master)](https://coveralls.io/github/softmonkeyjapan/angular-google-picker?branch=master)
 [![Build Status](https://travis-ci.org/softmonkeyjapan/angular-google-picker.svg?branch=master)](https://travis-ci.org/softmonkeyjapan/angular-google-picker)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Angular directive that interact with the Google Picker API :
 * [Google Picker API Overview](https://developers.google.com/picker/)
@@ -13,7 +16,7 @@ Angular directive that interact with the Google Picker API :
 **File Size:** 2.1Kb minified
 
 
-# Installation
+## Installation
 
 1. Using Bower (recommended)
 
@@ -32,7 +35,7 @@ Angular directive that interact with the Google Picker API :
 Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2.zip](https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2.zip)
 
 
-# Usage
+## Usage
 
 1. Include Google client and api script in your layout
 
@@ -106,7 +109,7 @@ Every file is a json object that looks like :
   ```
 
 
-# Configuration
+## Configuration
 
 In order to work, Google Picker needs to connect to the Google API using an application credentials (Api Key and client ID). For more information on how to create an application/project, please refer to [https://developers.google.com/drive/web/](https://developers.google.com/drive/web/). To do so, you'll need to configure the service.
 
@@ -129,7 +132,7 @@ angular.module('myApp', ['lk-google-picker'])
 }])
 ```
 
-### Features
+## Features
 
 The Picker use the concept of views and features that allow you to customize it. The service provider allow you to enable some features to the Picker the same way you define your API Key or client ID (using either configure or setters).
 
@@ -180,11 +183,11 @@ angular.module('myApp', ['lk-google-picker'])
 Please refer to [https://developers.google.com/picker/docs/reference](https://developers.google.com/picker/docs/reference) for more informations.
 
 
-# Callbacks
+## Callbacks
 
 The directive provide you 3 callbacks that you can use in order to work with the Picker.
 
-### onLoaded
+### `onLoaded`
 
 This callback is triggered after the picker has been initialized and shown on the page.
 
@@ -202,7 +205,7 @@ angular.module('myApp', ['lk-google-picker'])
 <a href="javascript:;" lk-google-picker on-loaded="onLoaded()">Open my Google Drive</a>
 ```
 
-### onPicked
+### `onPicked`
 
 This callback is triggered after you select files and click on the `select` button from the Picker.
 
@@ -220,7 +223,7 @@ angular.module('myApp', ['lk-google-picker'])
 <a href="javascript:;" lk-google-picker on-picked="onPicked">Open my Google Drive</a>
 ```
 
-### onCancel
+### `onCancel`
 
 This callback is triggered after the picker has been closed by clicking on the cancel button from the picker.
 
@@ -238,7 +241,7 @@ angular.module('myApp', ['lk-google-picker'])
 <a href="javascript:;" lk-google-picker on-cancel="onCancel">Open my Google Drive</a>
 ```
 
-# Example
+## Demo
 
 The demo version available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/) can be found in the `example` folder.
 You will need a server in order to try it on your local machine. Since the Google Picker demo application is setup to allow origin from localhost:8000, I encourage you to use the python `SimpleHTTPServer` :
@@ -251,11 +254,5 @@ Serving HTTP on 0.0.0.0 port 8000 ...
 
 You should now be able to browse to `localhost:8000` and see it in action from your localhost.
 
-
-# Demo
-
-A demo version is available at [http://softmonkeyjapan.github.io/angular-google-picker/](http://softmonkeyjapan.github.io/angular-google-picker/).
-
-
-# License
+## License
 Licensed under the MIT license
