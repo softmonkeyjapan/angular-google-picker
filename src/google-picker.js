@@ -61,7 +61,7 @@
         /**
          * Load required modules
          */
-        function instanciate () {
+        function instantiate () {
           gapi.load('auth', { 'callback': onApiAuthLoad });
           gapi.load('picker');
         }
@@ -139,11 +139,9 @@
           });
         }
 
-        gapi.load('auth');
-        gapi.load('picker');
-
         element.bind('click', function (e) {
-          instanciate();
+	  /* dynamically load dependencies only on click */
+          instantiate();
         });
       }
     }
