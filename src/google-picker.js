@@ -56,6 +56,8 @@
 				onCancel: '&',
 				onPicked: '&',
 				accesToken: '=',
+				openDialog: '=',
+				openDialogFrom: '@',
 			},
 			link: function (scope, element, attrs) {
 				var accessToken = null;
@@ -109,11 +111,16 @@
 				 * Everything is good, open the files picker
 				 */
 				function openDialog () {
-					var picker = new google.picker.PickerBuilder()
-																 .setLocale(lkGoogleSettings.locale)
-																 .setOAuthToken(accessToken)
-																 .setCallback(pickerResponse)
-																 .setOrigin(lkGoogleSettings.origin);
+					try{
+						var picker = new google.picker.PickerBuilder()
+																	.setLocale(lkGoogleSettings.locale)
+																	.setOAuthToken(accessToken)
+																	.setCallback(pickerResponse)
+																	.setOrigin(lkGoogleSettings.origin);
+					}catch(err){
+						setTimeout(openDialog, 100);
+						return;
+					}
 
 					if (lkGoogleSettings.features.length > 0) {
 						angular.forEach(lkGoogleSettings.features, function (feature, key) {
@@ -150,10 +157,21 @@
 					});
 				}
 
-				element.bind('click', function (e) {
-		/* dynamically load dependencies only on click */
-					instantiate();
-				});
+				if(!scope.openDialogFrom || scope.openDialogFrom == 'both' || scope.openDialogFrom == 'click'){
+					element.bind('click', function (e) {
+					/* dynamically load dependencies only on click */
+						instantiate();
+					});
+				}
+
+				if(scope.openDialogFrom == 'both' || scope.openDialogFrom == 'variable'){
+					scope.$watch('openDialog', function(value){
+						if(value == true){
+							instantiate();
+						}
+					});
+				}
+
 			}
 		}
 	}]);
