@@ -79,7 +79,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2
 5. Add the directive to your HTML element
 
   ```html
-  <a href="javascript:;" lk-google-picker on-authenticated="onAuthenticated(result)" on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" acces-token="tokenFromTheServer" >Open my Google Drive</a>
+  <a href="javascript:;" lk-google-picker on-authenticated="onAuthenticated(result)" on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" acces-token="tokenFromTheServer" open-dialog-from="both" open-dialog="openIt" >Open my Google Drive</a>
   ```
 
 6. That's it, you're done!
@@ -274,6 +274,18 @@ angular.module('myApp', ['lk-google-picker'])
   }
 }]);
 ```
+### `openDialogFrom`
+This property gives you chance to specify from where you want to open the picker.
+Options are:
+  both - opens on click or when openDialog value is true
+  click - opens only on click
+  variable - opens only when openDialog value is true
+
+Default option is click!
+
+### `openDialog`
+You can use this, to controll the picker
+
 
 ## Demo
 
