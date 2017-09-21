@@ -79,7 +79,7 @@ Download [https://github.com/softmonkeyjapan/angular-google-picker/archive/0.2.2
 5. Add the directive to your HTML element
 
   ```html
-  <a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()">Open my Google Drive</a>
+  <a href="javascript:;" lk-google-picker on-authenticated="onAuthenticated(result)" on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" acces-token="tokenFromTheServer" open-dialog-from="both" open-dialog="openIt" >Open my Google Drive</a>
   ```
 
 6. That's it, you're done!
@@ -187,6 +187,25 @@ Please refer to [https://developers.google.com/picker/docs/reference](https://de
 
 The directive provide you 3 callbacks that you can use in order to work with the Picker.
 
+### `onAuthenticated`
+
+This callback is triggered after you select files and click on the `select` button from the Picker.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+  $scope.onAuthenticated = function (result) {
+    console.log(result.access_token);
+  }
+}]);
+```
+
+```html
+<a href="javascript:;" lk-google-picker on-picked="onPicked">Open my Google Drive</a>
+```
+
+
 ### `onLoaded`
 
 This callback is triggered after the picker has been initialized and shown on the page.
@@ -240,6 +259,33 @@ angular.module('myApp', ['lk-google-picker'])
 ```html
 <a href="javascript:;" lk-google-picker on-cancel="onCancel">Open my Google Drive</a>
 ```
+
+## Additional parametars
+
+### `accessToken`
+This property gives you chance to use externally generated access token.
+
+```js
+angular.module('myApp', ['lk-google-picker'])
+
+.controller('ExampleCtrl', ['$scope', function ($scope) {
+  $scope.setToken = function (token) {
+    scope.tokenFromTheServer = token;
+  }
+}]);
+```
+### `openDialogFrom`
+This property gives you chance to specify from where you want to open the picker.
+Options are:
+  both - opens on click or when openDialog value is true
+  click - opens only on click
+  variable - opens only when openDialog value is true
+
+Default option is click!
+
+### `openDialog`
+You can use this, to controll the picker
+
 
 ## Demo
 

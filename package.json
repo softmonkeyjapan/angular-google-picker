@@ -4,7 +4,6 @@
   "description": "An AngularJs directive that interact with the Google API Picker",
   "author": "Loic Kartono <contact@kartono-loic.com> (http://www.kartono-loic.com)",
   "scripts": {
-    "postinstall": "bower install",
     "pretest": "rimraf coverage/",
     "test": "gulp test",
     "preversion": "npm test",
@@ -16,8 +15,9 @@
       "email": "me@frandiox.com"
     }
   ],
+  "main": "dist/google-picker.js",
   "devDependencies": {
-    "bower": "^1.7.9",
+    "bower": "^1.8.2",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
     "gulp": "^3.8.8",
@@ -26,7 +26,7 @@
     "gulp-uglify": "^1.0.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.0",
-    "karma-coverage": "^1.0.0",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "phantomjs-prebuilt": "^2.1.7",
@@ -36,5 +36,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "dependencies": {}
 }
