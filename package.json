@@ -4,7 +4,6 @@
   "description": "An AngularJs directive that interact with the Google API Picker",
   "author": "Loic Kartono <contact@kartono-loic.com> (http://www.kartono-loic.com)",
   "scripts": {
-    "postinstall": "bower install",
     "pretest": "rimraf coverage/",
     "test": "gulp test",
     "preversion": "npm test",
@@ -16,10 +15,8 @@
       "email": "me@frandiox.com"
     }
   ],
-  "dependencies": {
-    "bower": "^1.8.2"
-  },
   "devDependencies": {
+    "bower": "^1.8.2",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
     "gulp": "^3.8.8",
@@ -38,5 +35,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "dependencies": {}
 }
