@@ -15,6 +15,7 @@
       "email": "me@frandiox.com"
     }
   ],
+  "main": "dist/google-picker.js",
   "devDependencies": {
     "bower": "^1.8.2",
     "coveralls": "^2.11.9",
