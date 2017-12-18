@@ -62,7 +62,7 @@
          * Load required modules
          */
         function instantiate () {
-          gapi.load('auth', { 'callback': onApiAuthLoad });
+          gapi.load('auth2', { 'callback': onApiAuthLoad });
           gapi.load('picker');
         }
 
@@ -71,17 +71,18 @@
          * If user is already logged in, then open the Picker modal
          */
         function onApiAuthLoad () {
-          var authToken = gapi.auth.getToken();
-
-          if (authToken) {
-            handleAuthResult(authToken);
-          } else {
-            gapi.auth.authorize({
-              'client_id' : lkGoogleSettings.clientId,
-              'scope'     : lkGoogleSettings.scopes,
-              'immediate' : false
-            }, handleAuthResult);
-          }
+          gapi.auth2.init({
+            'client_id' : lkGoogleSettings.clientId,
+            'scope'     : lkGoogleSettings.scopes
+          })
+          .then(function (authInstance) {
+            return authInstance.signIn();
+          })
+          .then(function (guser) {
+            var response = guser.getAuthResponse();
+            accessToken = response.access_token;
+            openDialog();
+          });
         }
 
         /**
